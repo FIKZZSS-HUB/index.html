@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Ulang Tahun ayahh dedii! 🎂 20 April 2025</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Loading */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            animation: fadeOut 1s ease 2s forwards;
+        }
+
+        .cake-spin {
+            width: 120px;
+            height: 120px;
+            border: 6px solid #f3f3f3;
+            border-top: 6px solid #ff6b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite, bounce 0.6s infinite alternate;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        @keyframes bounce { to { transform: translateY(-15px); } }
+        @keyframes fadeOut { to { opacity: 0; visibility: hidden; } }
+
+        /* Main Container */
+        .container { 
+            min-height: 100vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 1s ease 2.5s forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; } }
+
+        /* Floating Emojis */
+        .floaters {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floater {
+            position: absolute;
+            font-size: 2.5rem;
+            animation: float 6s infinite linear;
+        }
+
+        .floater:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .floater:nth-child(2) { top: 20%; right: 10%; animation-delay: 1s; }
+        .floater:nth-child(3) { top: 40%; left: 5%; animation-delay: 2s; }
+        .floater:nth-child(4) { top: 60%; right: 15%; animation-delay: 3s; }
+        .floater:nth-child(5) { top: 80%; left: 20%; animation-delay: 4s; }
+
+        @keyframes float {
+            0% { 
+                transform: translateY(100vh) rotate(0deg); 
+                opacity: 1; 
+            }
+            100% { 
+                transform: translateY(-100px) rotate(360deg); 
+                opacity: 0; 
+            }
+        }
+
+        /* Content */
+        .content {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+            max-width: 500px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        /* Photo Upload */
+        .photo-upload {
+            width: 180px;
+            height: 180px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            border: 8px solid rgba(255,255,255,0.4);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background: linear-gradient(45deg, #ff9a9e, #fecfef);
+        }
+
+        .photo-upload:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        #photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .upload-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .photo-upload:hover .upload-overlay { opacity: 1; }
+
+        /* Name Input */
+        #nameInput {
+            background: rgba(255,255,255,0.9);
+            border: none;
+            border-radius: 25px;
+            padding: 18px 30px;
+            font-size: 1.4rem;
+            width: 100%;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        #nameInput:focus {
+            outline: none;
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+
+        /* Button */
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(255,107,107,0.6);
+        }
+
+        /* Celebration */
+        .celebration {
+            display: none;
+        }
+
+        .celebration.show { display: block; animation: popIn 0.8s ease; }
+
+        @keyframes popIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.05); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        .title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 4s ease infinite;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
+
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .cake {
+            width: 200px;
+            height: 200px;
+            margin: 30px auto;
+            position: relative;
+            animation: cakeFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes cakeFloat {
+            0%, 100% { transform: translateY(0) rotate(-2deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+
+        .cake-base {
+            width: 140px;
+            height: 30px;
+            background: linear-gradient(45deg, #8B4513, #A0522D);
+            border-radius: 20px;
+            margin: 0 auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .cake-layer {
+            width: 120px;
+            height: 45px;
+            margin: 8px auto 0;
+            border-radius: 15px;
+            position: relative;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .layer1 { background: linear-gradient(45deg, #FF69B4, #FF1493); }
+        .layer2 { background: linear-gradient(45deg, #00CED1, #20B2AA); margin-top: 5px; width: 110px; }
+        .layer3 { background: linear-gradient(45deg, #FFD700, #FFA500); margin-top: 5px; width: 100px; }
+
+        .candles {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .candle {
+            width: 6px;
+            height: 35px;
+            background: linear-gradient(to top, #DAA520, #F4A460);
+            border-radius: 3px 3px 0 0;
+            position: relative;
+        }
+
+        .flame {
+            position: absolute;
+            top: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 15px;
+            background: radial-gradient(circle, #FFD700, #FF4500);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); }
+            100% { transform: translateX(-50%) scale(1.1) translateY(-1px); }
+        }
+
+        .message {
+            font-size: 1.3rem;
+            color: white;
+            margin: 30px 0;
+            line-height: 1.6;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            animation: slideUp 1s ease 0.5s both;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .date-badge {
+            background: rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-top: 20px;
+            display: inline-block;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .content { padding: 25px 20px; }
+            .photo-upload { width: 150px; height: 150px; }
+            #nameInput { font-size: 1.2rem; padding: 15px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="cake-spin"></div>
+        <p style="color: white; font-size: 1.2rem; margin-top: 20px;">Mempersiapkan 🎂 Kejutan...</p>
+    </div>
+
+    <!-- Floating Emojis -->
+    <div class="floaters">
+        <div class="floater">🎈</div>
+        <div class="floater">🎉</div>
+        <div class="floater">✨</div>
+        <div class="floater">🎊</div>
+        <div class="floater">🎁</div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content">
+            <!-- Input Form -->
+            <div id="inputForm">
+                <div class="photo-upload" id="photoUpload">
+                    <img id="photo" src="https://via.placeholder.com/180x180/ff9a9e/ffffff?text=📸+Foto" alt="Foto">
+                    <div class="upload-overlay">
+                        <span>📸 Upload Foto</span>
+                    </div>
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                </div>
+                
+                <input type="text" id="nameInput" placeholder="Masukkan nama kamu... 😊" maxlength="25">
+                <br>
+                <button class="btn" onclick="startCelebration()">🎉 MULAI KEJUTAN 🎉</button>
+            </div>
+
+            <!-- Celebration -->
+            <div id="celebration" class="celebration">
+                <h1 class="title" id="title">SELAMAT ULANG TAHUN!</h1>
+                
+                <div class="cake">
+                    <div class="cake-base"></div>
+                    <div class="cake-layer layer1"></div>
+                    <div class="cake-layer layer2"></div>
+                    <div class="cake-layer layer3"></div>
+                    <div class="candles">
+                        <div class="candle"><div class="flame"></div></div>
+                        <div class="candle"><div class="flame"></div></div>
+                        <div class="candle"><div class="flame"></div></div>
+                    </div>
+                </div>
+                
+                <p class="message" id="message"></p>
+                <div class="date-badge">🎂 20 April - Hari Spesialmu! 🎂</div>
+                <br>
+                <button class="btn" onclick="share()">📱 Bagikan Kejutan</button>
+                <button class="btn" onclick="reset()">🔄 Buat Lagi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentName = '';
+        let currentPhoto = '';
+
+        // Photo Upload
+        document.getElementById('photoInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('photo').src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        document.getElementById('photoUpload').addEventListener('click', function() {
+            document.getElementById('photoInput').click();
+        });
+
+        function startCelebration() {
+            currentName = document.getElementById('nameInput').value.trim() || 'Teman Spesial';
+            
+            document.getElementById('inputForm').style.display = 'none';
+            document.getElementById('celebration').classList.add('show');
+            
+            document.getElementById('title').textContent = `SELAMAT ULANG TAHUN ${currentName.toUpperCase()}!`;
+            document.getElementById('message').innerHTML = 
+                `${currentName},<br>semoga di usia baru ini penuh <strong>kebahagiaan</strong>, <strong>kesehatan</strong>, dan <strong>kesuksesan</strong>! 🎉✨`;
+            
+            // Trigger more floaters
+            createConfetti();
+        }
+
+        function reset() {
+            document.getElementById('celebration').classList.remove('show');
+            document.getElementById('inputForm').style.display = 'block';
+            document.getElementById('nameInput').value = '';
+            document.getElementById('photo').src = 'https://via.placeholder.com/180x180/ff9a9e/ffffff?text=📸+Foto';
+        }
+
+        function share() {
+            const text = `🎉 Selamat Ulang Tahun ${currentName}! Cek kejutan spesial 20 April ini! 🎂`;
+            const url = window.location.href;
+            if (navigator.share) {
+                navigator.share({ title: 'Selamat Ulang Tahun!', text, url });
+            } else {
+                navigator.clipboard.writeText(`${text}\n${url}`);
+                alert('Link kejutan udah dicopy! Share yuk! 🎉');
+            }
+        }
+
+        // Confetti Effect
+        function createConfetti() {
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.innerHTML = ['🎉','🎈','✨','🎊','🎁','⭐'][Math.floor(Math.random()*6)];
+                    confetti.className = 'floater confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    document.querySelector('.floaters').appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 5000);
+                }, i * 50);
+            }
+        }
+
+        // Enter key support
+        document.getElementById('nameInput').addEventListener('keypress', function(e) {
+            if (
