@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Maaf Teteh 💌</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body{
+      height:100vh;
+      overflow:hidden;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      background:linear-gradient(135deg,#ffb6d9,#ff7eb3,#ffc2dd);
+      position:relative;
+    }
+
+    .hearts{
+      position:absolute;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      top:0;
+      left:0;
+    }
+
+    .heart{
+      position:absolute;
+      bottom:-20px;
+      color:white;
+      animation:float 8s linear infinite;
+      opacity:0.7;
+      font-size:20px;
+    }
+
+    @keyframes float{
+      0%{
+        transform:translateY(0) rotate(0deg);
+        opacity:0;
+      }
+      50%{
+        opacity:1;
+      }
+      100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+      }
+    }
+
+    .envelope{
+      width:320px;
+      height:220px;
+      background:#ff4f8b;
+      position:relative;
+      border-radius:12px;
+      cursor:pointer;
+      box-shadow:0 15px 40px rgba(0,0,0,0.25);
+      transition:1s;
+    }
+
+    .envelope:hover{
+      transform:scale(1.03);
+    }
+
+    .flap{
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:#ff73a6;
+      clip-path:polygon(0 0,100% 0,50% 55%);
+      transform-origin:top;
+      transition:1s;
+      z-index:3;
+      border-radius:12px;
+    }
+
+    .letter{
+      position:absolute;
+      width:90%;
+      height:90%;
+      background:white;
+      left:5%;
+      top:5%;
+      border-radius:15px;
+      padding:20px;
+      overflow:auto;
+      transform:translateY(40%);
+      transition:1s;
+      z-index:1;
+      text-align:center;
+      color:#ff4f8b;
+    }
+
+    .letter h1{
+      font-size:24px;
+      margin-bottom:15px;
+    }
+
+    .letter p{
+      font-size:14px;
+      line-height:1.7;
+      color:#555;
+    }
+
+    .open .flap{
+      transform:rotateX(180deg);
+    }
+
+    .open .letter{
+      transform:translateY(-40%);
+    }
+
+    .btn{
+      margin-top:20px;
+      padding:12px 24px;
+      border:none;
+      background:linear-gradient(45deg,#ff4f8b,#ff7eb3);
+      color:white;
+      border-radius:30px;
+      font-size:16px;
+      cursor:pointer;
+      transition:0.3s;
+      box-shadow:0 5px 15px rgba(255,79,139,0.4);
+    }
+
+    .btn:hover{
+      transform:scale(1.08);
+    }
+
+    .hidden{
+      display:none;
+    }
+
+    .forgive{
+      position:absolute;
+      inset:0;
+      background:linear-gradient(135deg,#ff9ac5,#ffd2e7);
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      padding:20px;
+      opacity:0;
+      pointer-events:none;
+      transition:1s;
+    }
+
+    .forgive.show{
+      opacity:1;
+      pointer-events:auto;
+    }
+
+    .forgive h1{
+      color:white;
+      font-size:38px;
+      animation:pulse 2s infinite;
+    }
+
+    .forgive p{
+      margin-top:15px;
+      color:white;
+      font-size:18px;
+      max-width:500px;
+    }
+
+    @keyframes pulse{
+      0%,100%{
+        transform:scale(1);
+      }
+      50%{
+        transform:scale(1.08);
+      }
+    }
+
+    .sparkle{
+      position:absolute;
+      width:8px;
+      height:8px;
+      background:white;
+      border-radius:50%;
+      animation:spark 2s linear infinite;
+    }
+
+    @keyframes spark{
+      0%{
+        transform:scale(0) translateY(0);
+        opacity:1;
+      }
+      100%{
+        transform:scale(2) translateY(-100px);
+        opacity:0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts"></div>
+
+  <div class="envelope" id="envelope">
+
+    <div class="flap"></div>
+
+    <div class="letter">
+
+      <h1>💌 Buat Teteh</h1>
+
+      <p>
+        Teteh, Dede minta maaf ya tadi bikin teteh ngambek 😭<br><br>
+
+        Tapi serius, Dede ngechat bukan karena teteh dijadiin pelarian atau cuma tempat gabut doang.
+        Dede nyaman ngobrol sama teteh, makanya Dede sering nyari teteh juga.<br><br>
+
+        Mungkin cara Dede tadi bikin teteh salah paham sampe kepikiran yang engga-engga.
+        Tapi sumpah Dede ga pernah ada niat buat manfaatin perasaan teteh.<br><br>
+
+        Dede cuma takut teteh jadi jauh, marah, atau males ngobrol lagi sama Dede 😭
+        Karena jujur, teteh tuh berarti buat Dede.<br><br>
+
+        Jadi... boleh ga teteh maafin Dede? 🥺💗
+      </p>
+
+      <button class="btn" onclick="forgiveMe()">
+        Iya Teteh Maafin 💗
+      </button>
+
+    </div>
+
+  </div>
+
+  <div class="forgive" id="forgivePage">
+    <h1>YEAAYY 💖</h1>
+    <p>
+      Makasih ya teteh udah maafin Dede 😭💗<br>
+      Janji bakal lebih ngejaga perasaan teteh lagi.
+    </p>
+  </div>
+
+  <script>
+
+    const envelope = document.getElementById("envelope");
+    const heartsContainer = document.querySelector(".hearts");
+
+    envelope.addEventListener("click", () => {
+      envelope.classList.toggle("open");
+    });
+
+    function createHeart(){
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💗";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 5 + "s";
+
+      heartsContainer.appendChild(heart);
+
+      setTimeout(()=>{
+        heart.remove();
+      },8000);
+    }
+
+    setInterval(createHeart,300);
+
+    function forgiveMe(){
+      document.getElementById("forgivePage").classList.add("show");
+
+      for(let i=0;i<50;i++){
+        createSparkle();
+      }
+    }
+
+    function createSparkle(){
+      const sparkle = document.createElement("div");
+      sparkle.classList.add("sparkle");
+
+      sparkle.style.left = Math.random()*100 + "vw";
+      sparkle.style.top = Math.random()*100 + "vh";
+
+      document.body.appendChild(sparkle);
+
+      setTimeout(()=>{
+        sparkle.remove();
+      },2000);
+    }
+
+  </script>
+
+</body>
+</html>
